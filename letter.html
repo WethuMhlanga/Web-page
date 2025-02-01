@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter for Zanele</title>
+    <script>
+        function openLetter() {
+            const envelope = document.querySelector(".envelope");
+            const letter = document.querySelector(".letter");
+
+            // Random messages
+            const messages = [
+                "Dear Zanele, you are amazing! 💖",
+                "Zanele, your kindness shines bright! 🌟",
+                "You make the world a better place! 💕",
+                "Keep smiling, Zanele! 😊",
+                "Sending you love and joy today! ❤️"
+            ];
+
+            // Pick a random message
+            document.querySelector(".letter-text").textContent = messages[Math.floor(Math.random() * messages.length)];
+
+            envelope.classList.add("open");
+
+            setTimeout(() => {
+                letter.classList.add("visible");
+                createFlowers();
+            }, 1000);
+        }
+
+        function createFlowers() {
+            const bouquetContainer = document.querySelector(".bouquet-container");
+            bouquetContainer.innerHTML = '';
+
+            for (let i = 0; i < 5; i++) {
+                const flower = document.createElement("div");
+                flower.classList.add("flower");
+                flower.style.left = `${10 + i * 20}%`;
+                flower.style.animationDelay = `${i * 0.2}s`;
+                bouquetContainer.appendChild(flower);
+            }
+        }
+    </script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to bottom, #ffb6c1, #ff69b4);
+            font-family: 'Arial', sans-serif;
+        }
+        .envelope-container {
+            position: relative;
+            width: 80vw;
+            max-width: 300px;
+            height: auto;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .envelope {
+            width: 100%;
+            height: 50vw;
+            max-height: 200px;
+            background: pink;
+            border: 2px solid #ff1493;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            clip-path: polygon(0 100%, 50% 50%, 100% 100%, 100% 0, 0 0);
+            transition: transform 1s ease-in-out;
+        }
+        .envelope.open {
+            transform: rotateX(180deg);
+        }
+        .letter {
+            width: 90%;
+            max-width: 240px;
+            height: 50vw;
+            max-height: 160px;
+            background: #ff69b4;
+            border: 3px solid #ff1493;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2em;
+            position: absolute;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+            box-shadow: 0px 0px 10px #ff1493;
+        }
+        .letter.visible {
+            opacity: 1;
+            transform: translateY(-30px);
+        }
+        .name {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.2em;
+            color: #ff1493;
+            font-weight: bold;
+            text-align: center;
+        }
+        .bouquet-container {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: visible;
+        }
+        .flower {
+            width: 8vw;
+            max-width: 30px;
+            height: 8vw;
+            max-height: 30px;
+            background: radial-gradient(circle, #ff1493, #ff69b4);
+            border-radius: 50%;
+            position: absolute;
+            animation: floatUp 2s ease-in-out forwards;
+        }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(30px) scale(0.8);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(-50px) scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="envelope-container" onclick="openLetter()">
+        <div class="envelope">
+            <div class="name">To: Zanele Mpika</div>
+        </div>
+        <div class="letter"><span class="letter-text">Dear Zanele, you are amazing! 💖</span></div>
+        <div class="bouquet-container"></div>
+    </div>
+</body>
+</html>

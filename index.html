@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zanele Mpika</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const button = document.querySelector(".emergency-button");
+            button.style.fontSize = "30px";
+            button.style.background = "black";
+            button.style.color = "red";
+            button.style.border = "3px solid red";
+            button.style.animation = "shake 0.5s infinite alternate";
+        });
+        function goToLetterPage() {
+            window.location.href = 'letter.html';
+        }
+    </script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #000;
+        }
+        .emergency-button {
+            padding: 20px 50px;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        @keyframes shake {
+            0% { transform: rotate(-5deg); }
+            100% { transform: rotate(5deg); }
+        }
+    </style>
+</head>
+<body>
+    <button class="emergency-button" onclick="goToLetterPage()">EMERGENCY</button>
+</body>
+</html>
