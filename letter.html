@@ -3,203 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Letter for Zanele</title>
+    <title>Happy Valentine's</title>
     <link rel="icon" type="image/jpg" href="img/favicon.jpg">
-    <script>
-        function openLetter() {
-            const envelope = document.querySelector(".envelope");
-            const letter = document.querySelector(".letter");
-
-            // List of 50 messages
-            const messages = [
-                "I feel lucky just to know you. 🍀 💖",
-                "You are the kind of person the world needs more of. 🌟",
-                "You are the definition of wonderful. ✨",
-                "I love how just one look from you makes everything better. 👀💖",
-                "You are more amazing than you will ever realize. ✨",
-                "Your smile lights up the world. 🌞",
-                "I can't imagine life without you. 💭❤️",
-                "You bring out the best in everyone around you. 💫",
-                "You're a blessing to everyone you meet. 🙌💖",
-                "You have the kindest heart. 💕",
-                "The world is better with you in it. 🌍💖",
-                "You're one of a kind. 💎",
-                "Your positivity is contagious. 😁",
-                "You make life feel so much brighter. 🌈",
-                "I admire your strength and resilience. 💪",
-                "Every day with you is an adventure. 🚀",
-                "Your energy is truly uplifting. ⚡",
-                "You're an absolute treasure. 🏆",
-                "Your presence brings peace and calm. 🕊️",
-                "I can't wait to see all the amazing things you do. 🌟",
-                "You are the reason for so many smiles. 😊",
-                "You make even the smallest moments feel special. 💫",
-                "Your laugh is my favorite sound. 😂",
-                "Your heart is pure gold. 💛",
-                "I feel so lucky to have you in my life. 🍀",
-                "You are my source of happiness. 🌞",
-                "Every moment with you is unforgettable. ⏳",
-                "You are so much more than enough. 🌸",
-                "Your creativity knows no bounds. 🎨",
-                "You are the light that guides me. 💡",
-                "You make everything seem possible. ✨",
-                "You're the person everyone needs in their life. 💖",
-                "Your kindness knows no limits. 💖",
-                "You're one of the brightest stars in my sky. 🌟",
-                "Your intelligence blows me away. 🧠",
-                "Your strength is inspiring. 💪",
-                "I feel so blessed to know someone like you. 🙏",
-                "You brighten even the darkest days. 🌞",
-                "You're an incredible friend and an even more amazing person. 💫",
-                "Your heart is a beautiful thing. ❤️",
-                "You make the world a better place just by being in it. 🌍💖",
-                "Your courage inspires me to be braver. 🦸‍♀️",
-                "I admire your perseverance. 👏",
-                "You make everything feel so much lighter. 🎈",
-                "Your honesty is refreshing. 🍃",
-                "You're the best part of my day. ☀️",
-                "You make everything better with your presence. ✨",
-                "You're always there when I need you most. 🤗",
-                "You are a true friend in every sense of the word. 🤝",
-                "Your support means the world to me. 🌍",
-            ];
-
-            // Pick a random message
-            document.querySelector(".letter-text").textContent = messages[Math.floor(Math.random() * messages.length)];
-
-            envelope.classList.add("open");
-
-            setTimeout(() => {
-                letter.classList.add("visible");
-                createFlowers();
-            }, 1000);
-        }
-
-        function createFlowers() {
-            const bouquetContainer = document.querySelector(".bouquet-container");
-            bouquetContainer.innerHTML = '';
-
-            for (let i = 0; i < 5; i++) {
-                const flower = document.createElement("div");
-                flower.classList.add("flower");
-                flower.style.left = `${10 + i * 20}%`;
-                flower.style.animationDelay = `${i * 0.2}s`;
-                bouquetContainer.appendChild(flower);
-            }
-        }
-    </script>
     <style>
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
             background: linear-gradient(to bottom, #ffb6c1, #ff69b4);
             font-family: 'Arial', sans-serif;
-        }
-        .envelope-container {
+            overflow: hidden;
             position: relative;
-            width: 80vw;
-            max-width: 300px;
-            height: auto;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
         }
-        .envelope {
-            width: 100%;
-            height: 50vw;
-            max-height: 200px;
-            background: pink;
-            border: 2px solid #ff1493;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            clip-path: polygon(0 100%, 50% 50%, 100% 100%, 100% 0, 0 0);
-            transition: transform 1s ease-in-out;
-        }
-        .envelope.open {
-            transform: rotateX(180deg);
-        }
-        .letter {
-            width: 90%;
-            max-width: 240px;
-            height: 50vw;
-            max-height: 160px;
-            background: #ff69b4;
-            border: 3px solid #ff1493;
+
+        /* Floating Hearts Around Box */
+        .heart {
+            position: absolute;
+            font-size: 20px;
             color: white;
-            font-weight: bold;
-            font-size: 1.2em;
-            position: absolute;
+            opacity: 0.8;
+            animation: orbit 4s linear infinite;
+        }
+
+        @keyframes orbit {
+            0% { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+        }
+
+        /* Valentine's Box */
+        .box-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .box {
+            width: 100%;
+            height: 100%;
+            background: pink;
+            border: 4px solid #ff1493;
             text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: white;
+            position: absolute;
+            transition: transform 0.5s ease-in-out;
+            box-shadow: 0px 0px 15px #ff69b4;
+        }
+
+        .lid {
+            position: absolute;
+            width: 100%;
+            height: 40%;
+            background: #ff1493;
+            top: 0;
+            left: 0;
+            transition: transform 1s ease-in-out;
+            transform-origin: top;
+        }
+
+        .box-container.open .lid {
+            transform: rotateX(-120deg);
+        }
+
+        .rose {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
             opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-            box-shadow: 0px 0px 10px #ff1493;
+            font-size: 3em;
+            transition: transform 1s ease-in-out, opacity 1s;
         }
-        .letter.visible {
-            opacity: 1;
-            transform: translateY(-30px);
-        }
-        .name {
+
+        /* Romantic Message */
+        .message {
             position: absolute;
-            top: 10px;
+            width: 320px;
+            top: 60%;
             left: 50%;
             transform: translateX(-50%);
+            color: white;
             font-size: 1.2em;
-            color: #ff1493;
             font-weight: bold;
+            opacity: 0;
             text-align: center;
-        }
-        .bouquet-container {
-            position: absolute;
-            bottom: -50px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 100px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: visible;
-        }
-        .flower {
-            width: 8vw;
-            max-width: 30px;
-            height: 8vw;
-            max-height: 30px;
-            background: radial-gradient(circle, #ff1493, #ff69b4);
-            border-radius: 50%;
-            position: absolute;
-            animation: floatUp 2s ease-in-out forwards;
-        }
-        @keyframes floatUp {
-            0% {
-                transform: translateY(30px) scale(0.8);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(-50px) scale(1);
-                opacity: 1;
-            }
+            transition: opacity 2s ease-in-out;
+            background: rgba(255, 20, 147, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 20, 147, 0.8);
+            white-space: pre-line;
         }
     </style>
 </head>
 <body>
-    <div class="envelope-container" onclick="openLetter()">
-        <div class="envelope">
-            <div class="name">To: Zanele Mpika</div>
-        </div>
-        <div class="letter"><span class="letter-text">Dear Zanele, you are amazing! 💖</span></div>
-        <div class="bouquet-container"></div>
+    <audio id="loveSong" src="Mduduzi_Ncube_-_Njalo_ft_Mafikizolo-zamusic.org-.mp3" loop></audio>
+
+    <!-- Valentine's Box -->
+    <div class="box-container" onclick="openBox()">
+        <div class="lid"></div>
+        <div class="box">Happy Valentine's</div>
     </div>
+    
+    <!-- Rose & Message -->
+    <div class="rose">🌹</div>
+    <div class="message" id="loveMessage"></div>
+
+    <script>
+        function createHearts() {
+            let container = document.querySelector('.box-container');
+            for (let i = 0; i < 10; i++) {
+                let heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤️';
+                heart.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                heart.style.position = 'absolute';
+                heart.style.top = '50%';
+                heart.style.left = '50%';
+                heart.style.transformOrigin = '50px 50px';
+                heart.style.animationDelay = (Math.random() * 2) + 's';
+                container.appendChild(heart);
+            }
+        }
+
+        function openBox() {
+            let container = document.querySelector('.box-container');
+            let rose = document.querySelector('.rose');
+            let message = document.getElementById('loveMessage');
+            let audio = document.getElementById('loveSong');
+
+            // Play romantic music
+            audio.play();
+
+            // Open the box
+            container.classList.add('open');
+
+            // Show the rose after a delay
+            setTimeout(() => {
+                rose.style.opacity = '1';
+                rose.style.transform = 'translate(-50%, -50%) scale(1)';
+            }, 1000);
+
+            // Typewriter effect for the message
+            let text = `Sweetheart,
+
+I hope you will have an amazing day and I just wanted to say I'm really grateful to have you as part of my life.
+
+Thank you for filling my life with laughter and endless joy. 
+I appreciate you more than words can say.
+
+Happy Valentine's Day, sweatheart! ❤️🌹`;
+            let i = 0;
+
+            function typeWriter() {
+                if (i < text.length) {
+                    if (text.charAt(i) === '\n') {
+                        message.innerHTML += '<br>';
+                    } else {
+                        message.innerHTML += text.charAt(i);
+                    }
+                    i++;
+                    setTimeout(typeWriter, 50);
+                } else {
+                    message.style.opacity = '1';
+                    createHearts(); // Start the floating hearts around the box
+                }
+            }
+            setTimeout(() => {
+                message.style.opacity = '1';
+                typeWriter();
+            }, 1000); // Starts typing 1 second after opening the box
+        }
+    </script>
 </body>
 </html>
